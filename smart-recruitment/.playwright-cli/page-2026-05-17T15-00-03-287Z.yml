@@ -1,0 +1,160 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e7]: 招聘候选人端
+    - generic [ref=e8]:
+      - link "登录" [ref=e9] [cursor=pointer]:
+        - /url: /login
+      - link "注册" [ref=e10] [cursor=pointer]:
+        - /url: /register
+  - generic [ref=e11]:
+    - complementary "主导航" [ref=e12]:
+      - button "收起导航" [expanded] [ref=e13] [cursor=pointer]:
+        - generic [ref=e14]: ←
+        - text: 收起导航
+      - navigation [ref=e15]:
+        - generic [ref=e16]:
+          - generic [ref=e17]: 公开岗位
+          - link "浏览全部岗位" [ref=e18] [cursor=pointer]:
+            - /url: /jobs
+          - paragraph [ref=e19]: 游客可直接浏览所有公开在招岗位。
+        - generic [ref=e20]:
+          - generic [ref=e21]: 投递准备
+          - link "登录候选人账号" [ref=e22] [cursor=pointer]:
+            - /url: /login
+          - link "注册后投递" [ref=e23] [cursor=pointer]:
+            - /url: /register
+    - main [ref=e24]:
+      - generic [ref=e25]:
+        - generic [ref=e26]:
+          - generic [ref=e27]:
+            - paragraph [ref=e28]: 公开岗位大厅
+            - heading "浏览在招岗位" [level=1] [ref=e29]
+            - paragraph [ref=e30]: 无需登录即可查看全部公开岗位，注册或登录后再投递。
+          - generic "在招岗位数量" [ref=e31]:
+            - strong [ref=e32]: "12"
+            - text: 在招岗位
+        - generic [ref=e33]:
+          - generic [ref=e34]: 投递前会由后端校验结构化档案和合规简历。
+          - link "注册候选人账号" [ref=e35] [cursor=pointer]:
+            - /url: /register
+        - list [ref=e37]:
+          - listitem [ref=e38]:
+            - generic [ref=e39]:
+              - generic [ref=e40]:
+                - heading "go" [level=2] [ref=e41]
+                - paragraph [ref=e42]: gin框架
+              - generic [ref=e43]: active
+            - generic [ref=e44]:
+              - generic [ref=e45]: 登录后开放投递按钮
+              - link "查看详情" [ref=e46] [cursor=pointer]:
+                - /url: /jobs/18
+          - listitem [ref=e47]:
+            - generic [ref=e48]:
+              - generic [ref=e49]:
+                - heading "java" [level=2] [ref=e50]
+                - paragraph [ref=e51]: "123"
+              - generic [ref=e52]: active
+            - generic [ref=e53]:
+              - generic [ref=e54]: 登录后开放投递按钮
+              - link "查看详情" [ref=e55] [cursor=pointer]:
+                - /url: /jobs/17
+          - listitem [ref=e56]:
+            - generic [ref=e57]:
+              - generic [ref=e58]:
+                - heading "安全合规助理(副本)" [level=2] [ref=e59]
+                - paragraph [ref=e60]: 权限审计、密钥与 OSS 私有访问规范落地。
+              - generic [ref=e61]: active
+            - generic [ref=e62]:
+              - generic [ref=e63]: 登录后开放投递按钮
+              - link "查看详情" [ref=e64] [cursor=pointer]:
+                - /url: /jobs/12
+          - listitem [ref=e65]:
+            - generic [ref=e66]:
+              - generic [ref=e67]:
+                - heading "安全合规助理" [level=2] [ref=e68]
+                - paragraph [ref=e69]: 权限审计、密钥与 OSS 私有访问规范落地。
+              - generic [ref=e70]: active
+            - generic [ref=e71]:
+              - generic [ref=e72]: 登录后开放投递按钮
+              - link "查看详情" [ref=e73] [cursor=pointer]:
+                - /url: /jobs/11
+          - listitem [ref=e74]:
+            - generic [ref=e75]:
+              - generic [ref=e76]:
+                - heading "客服/运营支持" [level=2] [ref=e77]
+                - paragraph [ref=e78]: 协助企业与候选人沟通与台账整理。
+              - generic [ref=e79]: active
+            - generic [ref=e80]:
+              - generic [ref=e81]: 登录后开放投递按钮
+              - link "查看详情" [ref=e82] [cursor=pointer]:
+                - /url: /jobs/10
+          - listitem [ref=e83]:
+            - generic [ref=e84]:
+              - generic [ref=e85]:
+                - heading "算法工程（业务统计）" [level=2] [ref=e86]
+                - paragraph [ref=e87]: 与业务报表、数据统计相关（不做简历匹配向量检索）。
+              - generic [ref=e88]: active
+            - generic [ref=e89]:
+              - generic [ref=e90]: 登录后开放投递按钮
+              - link "查看详情" [ref=e91] [cursor=pointer]:
+                - /url: /jobs/9
+          - listitem [ref=e92]:
+            - generic [ref=e93]:
+              - generic [ref=e94]:
+                - heading "DevOps 实习" [level=2] [ref=e95]
+                - paragraph [ref=e96]: CI、部署脚本与监控告警（作业不考察 Docker 亦可了解）。
+              - generic [ref=e97]: active
+            - generic [ref=e98]:
+              - generic [ref=e99]: 登录后开放投递按钮
+              - link "查看详情" [ref=e100] [cursor=pointer]:
+                - /url: /jobs/8
+          - listitem [ref=e101]:
+            - generic [ref=e102]:
+              - generic [ref=e103]:
+                - heading "产品经理（实习）" [level=2] [ref=e104]
+                - paragraph [ref=e105]: 需求梳理、原型与验收标准。
+              - generic [ref=e106]: active
+            - generic [ref=e107]:
+              - generic [ref=e108]: 登录后开放投递按钮
+              - link "查看详情" [ref=e109] [cursor=pointer]:
+                - /url: /jobs/7
+          - listitem [ref=e110]:
+            - generic [ref=e111]:
+              - generic [ref=e112]:
+                - heading "测试工程师" [level=2] [ref=e113]
+                - paragraph [ref=e114]: 接口测试、端到端流程与回归。
+              - generic [ref=e115]: active
+            - generic [ref=e116]:
+              - generic [ref=e117]: 登录后开放投递按钮
+              - link "查看详情" [ref=e118] [cursor=pointer]:
+                - /url: /jobs/6
+          - listitem [ref=e119]:
+            - generic [ref=e120]:
+              - generic [ref=e121]:
+                - heading "MySQL DBA 助理" [level=2] [ref=e122]
+                - paragraph [ref=e123]: 协助库表设计、慢查询与数据备份。
+              - generic [ref=e124]: active
+            - generic [ref=e125]:
+              - generic [ref=e126]: 登录后开放投递按钮
+              - link "查看详情" [ref=e127] [cursor=pointer]:
+                - /url: /jobs/5
+          - listitem [ref=e128]:
+            - generic [ref=e129]:
+              - generic [ref=e130]:
+                - heading "全栈实习" [level=2] [ref=e131]
+                - paragraph [ref=e132]: 参与招聘系统功能迭代，熟悉前后端分离。
+              - generic [ref=e133]: active
+            - generic [ref=e134]:
+              - generic [ref=e135]: 登录后开放投递按钮
+              - link "查看详情" [ref=e136] [cursor=pointer]:
+                - /url: /jobs/4
+          - listitem [ref=e137]:
+            - generic [ref=e138]:
+              - generic [ref=e139]:
+                - heading "前端开发（React）" [level=2] [ref=e140]
+                - paragraph [ref=e141]: 负责 HR 与候选人双端页面与联调。
+              - generic [ref=e142]: active
+            - generic [ref=e143]:
+              - generic [ref=e144]: 登录后开放投递按钮
+              - link "查看详情" [ref=e145] [cursor=pointer]:
+                - /url: /jobs/3

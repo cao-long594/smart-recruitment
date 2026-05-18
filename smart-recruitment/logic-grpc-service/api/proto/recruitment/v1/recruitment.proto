@@ -1,0 +1,247 @@
+syntax = "proto3";
+
+package recruitment.v1;
+
+option go_package = "recruitment/api/gen/go/recruitment/v1;recruitmentv1";
+
+enum Role {
+  ROLE_UNSPECIFIED = 0;
+  ROLE_HR = 1;
+  ROLE_CANDIDATE = 2;
+}
+
+message Job {
+  int64 id = 1;
+  int64 hr_user_id = 2;
+  string title = 3;
+  string description = 4;
+  string status = 5;
+  string created_at = 6;
+  string updated_at = 7;
+}
+
+message CandidateProfile {
+  int64 user_id = 1;
+  string name = 2;
+  string phone = 3;
+  string education = 4;
+  string school = 5;
+  string experience = 6;
+  string skills = 7;
+  bool profile_complete = 8;
+  bool has_resume = 9;
+  string resume_object_key = 10;
+  string resume_file_name = 11;
+}
+
+message ApplicationRow {
+  int64 id = 1;
+  int64 job_id = 2;
+  int64 candidate_user_id = 3;
+  string applied_at = 4;
+  CandidateProfile candidate = 5;
+}
+
+message ChatMessage {
+  int64 id = 1;
+  string role = 2;
+  string content = 3;
+  string created_at = 4;
+}
+
+// --- Auth
+
+message RegisterRequest {
+  string email = 1;
+  string password = 2;
+  Role role = 3;
+}
+
+message RegisterResponse {
+  int64 user_id = 1;
+}
+
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  int64 user_id = 1;
+  Role role = 2;
+}
+
+// --- Public jobs
+
+message ListPublicJobsRequest {
+  int32 page = 1;
+  int32 page_size = 2;
+}
+
+message ListPublicJobsResponse {
+  repeated Job jobs = 1;
+  int64 total = 2;
+}
+
+// --- HR jobs (caller identity via gRPC metadata: x-user-id, x-user-role)
+
+message ListMyJobsRequest {
+  int32 page = 1;
+  int32 page_size = 2;
+}
+
+message ListMyJobsResponse {
+  repeated Job jobs = 1;
+  int64 total = 2;
+}
+
+message CreateJobRequest {
+  string title = 1;
+  string description = 2;
+}
+
+message CreateJobResponse {
+  Job job = 1;
+}
+
+message UpdateJobRequest {
+  int64 job_id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message UpdateJobResponse {
+  Job job = 1;
+}
+
+message ArchiveJobRequest {
+  int64 job_id = 1;
+}
+
+message ArchiveJobResponse {}
+
+// --- Candidate profile
+
+message GetCandidateProfileRequest {}
+
+message GetCandidateProfileResponse {
+  CandidateProfile profile = 1;
+}
+
+message UpdateCandidateProfileRequest {
+  string name = 1;
+  string phone = 2;
+  string education = 3;
+  string school = 4;
+  string experience = 5;
+  string skills = 6;
+}
+
+message UpdateCandidateProfileResponse {
+  CandidateProfile profile = 1;
+}
+
+// --- Resume / OSS
+
+message GetResumeUploadCredentialRequest {
+  string file_name = 1;
+  string content_type = 2;
+}
+
+message GetResumeUploadCredentialResponse {
+  string upload_url = 1;
+  string object_key = 2;
+  map<string, string> headers = 3;
+}
+
+message ConfirmResumeUploadedRequest {
+  string object_key = 1;
+  string file_name = 2;
+  string content_type = 3;
+  int64 size_bytes = 4;
+}
+
+message ConfirmResumeUploadedResponse {}
+
+message ParseResumeToProfileRequest {
+  bytes file_content = 1;
+  string file_name = 2;
+  string content_type = 3;
+}
+
+message ParseResumeToProfileResponse {
+  CandidateProfile profile = 1;
+}
+
+message GetResumeDownloadURLRequest {
+  int64 candidate_user_id = 1;
+}
+
+message GetResumeDownloadURLResponse {
+  string download_url = 1;
+}
+
+// --- Apply
+
+message ApplyJobRequest {
+  int64 job_id = 1;
+}
+
+message ApplyJobResponse {}
+
+message ListApplicationsForJobRequest {
+  int64 job_id = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+}
+
+message ListApplicationsForJobResponse {
+  repeated ApplicationRow rows = 1;
+  int64 total = 2;
+}
+
+// --- AI chat (HR only)
+
+message ChatMessageRequest {
+  string content = 1;
+}
+
+message ChatMessageResponse {
+  string answer = 1;
+}
+
+message ListChatHistoryRequest {
+  int32 page = 1;
+  int32 page_size = 2;
+}
+
+message ListChatHistoryResponse {
+  repeated ChatMessage messages = 1;
+  int64 total = 2;
+}
+
+service RecruitmentService {
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc Login(LoginRequest) returns (LoginResponse);
+
+  rpc ListPublicJobs(ListPublicJobsRequest) returns (ListPublicJobsResponse);
+
+  rpc ListMyJobs(ListMyJobsRequest) returns (ListMyJobsResponse);
+  rpc CreateJob(CreateJobRequest) returns (CreateJobResponse);
+  rpc UpdateJob(UpdateJobRequest) returns (UpdateJobResponse);
+  rpc ArchiveJob(ArchiveJobRequest) returns (ArchiveJobResponse);
+
+  rpc GetCandidateProfile(GetCandidateProfileRequest) returns (GetCandidateProfileResponse);
+  rpc UpdateCandidateProfile(UpdateCandidateProfileRequest) returns (UpdateCandidateProfileResponse);
+
+  rpc GetResumeUploadCredential(GetResumeUploadCredentialRequest) returns (GetResumeUploadCredentialResponse);
+  rpc ConfirmResumeUploaded(ConfirmResumeUploadedRequest) returns (ConfirmResumeUploadedResponse);
+  rpc ParseResumeToProfile(ParseResumeToProfileRequest) returns (ParseResumeToProfileResponse);
+  rpc GetResumeDownloadURL(GetResumeDownloadURLRequest) returns (GetResumeDownloadURLResponse);
+
+  rpc ApplyJob(ApplyJobRequest) returns (ApplyJobResponse);
+  rpc ListApplicationsForJob(ListApplicationsForJobRequest) returns (ListApplicationsForJobResponse);
+
+  rpc ChatMessage(ChatMessageRequest) returns (ChatMessageResponse);
+  rpc ListChatHistory(ListChatHistoryRequest) returns (ListChatHistoryResponse);
+}

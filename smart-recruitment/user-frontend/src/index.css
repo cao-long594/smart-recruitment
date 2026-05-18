@@ -1,0 +1,55 @@
+:root {
+  --bg: #f5f7f6;
+  --surface: #ffffff;
+  --border: #e2e8e4;
+  --text: #17201b;
+  --text-muted: #6b7280;
+  --primary: #047857;
+  --primary-hover: #065f46;
+  --primary-soft: #ecfdf5;
+  --danger: #dc2626;
+  --radius: 8px;
+  --shadow-sm: 0 1px 2px rgba(17, 24, 39, 0.05);
+  --shadow-md: 0 8px 26px rgba(17, 24, 39, 0.08);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.4rem;
+  font-weight: 600;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 650;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin: 0.4rem 0;
+}

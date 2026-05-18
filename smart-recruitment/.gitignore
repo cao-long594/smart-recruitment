@@ -1,0 +1,67 @@
+# --- Secrets & local config ---
+.env
+.env.*
+!.env.example
+logic-grpc-service/config/config.yaml
+
+# --- Dependencies ---
+node_modules/
+
+# --- Build output ---
+dist/
+**/dist/
+
+# --- Go ---
+*.exe
+__debug_bin*
+*.test
+*.out
+coverage.out
+coverage.html
+*.coverprofile
+vendor/
+
+# --- Node / Vite / tooling ---
+.vite/
+*.tsbuildinfo
+.npm/
+.eslintcache
+.stylelintcache
+*.local
+# Vite 本地环境（若使用）
+.env.local
+.env.*.local
+
+# --- Test / E2E ---
+.playwright-mcp/
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
+
+# --- Logs & temp ---
+*.log
+logs/
+tmp/
+temp/
+.cache/
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Editors / IDE ---
+.idea/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*~
+
+# 忽略所有week开头的文件夹
+week*/
+week0[1-8]/
